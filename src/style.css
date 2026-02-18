@@ -1,0 +1,136 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:#0b1220;
+  color:#e5e7eb;
+}
+
+.top{
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid #1f2937;
+  background:#0f172a;
+}
+
+.pill{
+  border:1px solid #1f2937;
+  background:#111827;
+  padding:8px 10px;
+  border-radius:999px;
+  font-size:14px;
+}
+
+.grid{
+  padding:20px;
+  display:grid;
+  gap:16px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.card{
+  border:1px solid #1f2937;
+  background:#111827;
+  border-radius:16px;
+  padding:16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+.row{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin:10px 0;
+}
+
+.row.right{ justify-content:flex-end; }
+
+label{ width:72px; opacity:.85; }
+
+input, select{
+  width:100%;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid #1f2937;
+  background:#0f172a;
+  color:#e5e7eb;
+}
+
+button{
+  padding:10px 12px;
+  border-radius:12px;
+  border:none;
+  background:#2563eb;
+  color:white;
+  cursor:pointer;
+  font-weight:600;
+}
+
+button:hover{ opacity:.92; }
+button.ghost{
+  background:transparent;
+  border:1px solid #1f2937;
+  color:#e5e7eb;
+}
+
+.stats{
+  display:flex;
+  gap:10px;
+  margin:12px 0;
+}
+
+.stat{
+  flex:1;
+  border:1px solid #1f2937;
+  background:#0f172a;
+  border-radius:14px;
+  padding:10px;
+}
+
+.k{ display:block; opacity:.8; font-size:12px; }
+.v{ display:block; font-size:22px; font-weight:800; margin-top:2px; }
+
+.list{
+  list-style:none;
+  padding:0;
+  margin:12px 0 0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.item{
+  border:1px solid #1f2937;
+  background:#0f172a;
+  border-radius:14px;
+  padding:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.badge{
+  font-size:12px;
+  padding:6px 8px;
+  border-radius:999px;
+  border:1px solid #1f2937;
+  opacity:.95;
+}
+
+.hint{ opacity:.8; line-height:1.35; }
+.foot{ padding:14px 20px; opacity:.75; }
+
+/* Mejoras mobile */
+input, select, button { min-height: 44px; }
+
+@media (max-width: 420px) {
+  .top { flex-direction: column; align-items: flex-start; }
+  .row { flex-direction: column; align-items: stretch; }
+  label { width: auto; }
+}

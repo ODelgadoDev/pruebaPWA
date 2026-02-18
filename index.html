@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RPG Log (PWA demo)</title>
+
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#111827" />
+  </head>
+
+  <body>
+    <header class="top">
+      <h1>RPG Log (PWA demo)</h1>
+      <p id="net" class="pill">Conexión: ...</p>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>Perfil</h2>
+
+        <div class="row">
+          <label>Nombre</label>
+          <input id="name" placeholder="Orlando" />
+        </div>
+
+        <div class="row">
+          <label>Rol</label>
+          <select id="role">
+            <option value="Guerrero">Guerrero</option>
+            <option value="Mago">Mago</option>
+            <option value="Bardo">Bardo</option>
+            <option value="Artesano">Artesano</option>
+            <option value="Explorador">Explorador</option>
+          </select>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="k">XP</span>
+            <span id="xp" class="v">0</span>
+          </div>
+          <div class="stat">
+            <span class="k">Nivel</span>
+            <span id="level" class="v">1</span>
+          </div>
+        </div>
+
+        <button id="saveProfile">Guardar perfil</button>
+        <p class="hint">Se guarda en localStorage ✅</p>
+      </section>
+
+      <section class="card">
+        <h2>Misiones (demo)</h2>
+
+        <div class="row">
+          <input id="questText" placeholder="Ej. Caminar 10 min" />
+          <button id="addQuest">Agregar</button>
+        </div>
+
+        <ul id="questList" class="list"></ul>
+
+        <div class="row right">
+          <button class="ghost" id="reset">Reset (borrar memoria)</button>
+        </div>
+
+        <p class="hint">
+          Completa misiones → sube XP. Todo persiste aunque cierres/reabras.
+        </p>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <small>Responsive + manifest listo para “Agregar a pantalla de inicio”.</small>
+    </footer>
+
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>
