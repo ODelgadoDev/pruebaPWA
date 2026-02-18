@@ -132,3 +132,9 @@ window.addEventListener("offline", updateNet);
 updateNet();
 renderProfile();
 renderQuests();
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(console.warn);
+  });
+}
