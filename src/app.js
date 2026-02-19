@@ -138,3 +138,43 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/sw.js").catch(console.warn);
   });
 }
+
+// ====== Botón instalar PWA (Chrome/Edge) ======
+let deferredPrompt = null;
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  // Evita que el navegador muestre su mini-banner automático
+  e.preventDefault();
+
+  deferredPrompt = e;
+
+  // Muestra tu botón
+  if (installBtn) {
+    installBtn.hidden = false;
+    installBtn.disabled = false;
+  }
+});
+
+if (installBtn) {
+  installBtn.addEventListener("click", async () => {
+    if (!deferredPrompt) return;
+
+    // Abre el prompt nativo
+    deferredPrompt.prompt();
+
+    // Espera la respuesta del usuario
+    const choice = await deferredPrompt.userChoice;
+    console.log("Resultado instalación:", choice.outcome);
+
+    // Limpia
+    deferredPrompt = null;
+    installBtn.hidden = true;
+  });
+}
+
+// Cuando ya está instalada, oculta el botón
+window.addEventListener("appinstalled", () => {
+  console.log("PWA instalada ✅");
+  if (installBtn) installBtn.hidden = true;
+});

@@ -1,21 +1,26 @@
-const CACHE = "rpglog-v1";
+const CACHE = "rpglog-cache-v1";
+
+// Archivos base para que NO se rompa offline (incluye CSS y JS)
 const ASSETS = [
   "/",
   "/index.html",
-  "/manifest.webmanifest"
+  "/manifest.webmanifest",
+  "/src/app.js",
+  "/src/style.css"
 ];
 
-self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));
+self.addEventListener("install", (event) => {
+  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)));
   self.skipWaiting();
 });
 
-self.addEventListener("activate", (e) => {
-  e.waitUntil(self.clients.claim());
+self.addEventListener("activate", (event) => {
+  event.waitUntil(self.clients.claim());
 });
 
-self.addEventListener("fetch", (e) => {
-  e.respondWith(
-    caches.match(e.request).then((cached) => cached || fetch(e.request))
+// Cache-first para assets
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request).then((cached) => cached || fetch(event.request))
   );
 });

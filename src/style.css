@@ -134,3 +134,20 @@ input, select, button { min-height: 44px; }
   .row { flex-direction: column; align-items: stretch; }
   label { width: auto; }
 }
+
+.topActions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+button.install{
+  background:#22c55e;
+  color:#052e16;
+  font-weight:800;
+}
+button.install:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
